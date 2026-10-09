@@ -1,0 +1,16 @@
+node_modules
+.next
+.env
+.env.local
+.env*.local
+
+# Build va test chiqindilari (commit qilinmaydi)
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+coverage
+out
+
+# OS / muharrir
+.DS_Store
+Thumbs.db
+*.log
