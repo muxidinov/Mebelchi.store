@@ -1,5 +1,5 @@
 import type { RequestInput } from "./schemas";
-// Supabase REST (server-only). SUPABASE_URL/KEY yo'q bo'lsa, saqlash o'tkazib yuboriladi (sayt baribir ishlaydi).
+
 const cfg = () => {
   const url = process.env.SUPABASE_URL?.replace(/\/$/, ""), key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   return url && key ? { url, headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json" } } : null;

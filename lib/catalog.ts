@@ -8,7 +8,7 @@ export type Product = {
 };
 export const allProducts = () => products;export const getProduct = (id: string) => products.find((p) => p.id === id);
 export const getCategory = (slug: string) => categories.find((c) => c.slug === slug);
-// Narxni o'zbekcha yozuvda ko'rsatadi: 3500000 -> "3 500 000"
+
 export const formatPrice = (n: number, lang: Lang = "uz") => {
   if (!Number.isFinite(n)) return "";
   const s = Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, lang === "ru" ? "\u202f" : "\u00a0");

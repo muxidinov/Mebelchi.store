@@ -15,7 +15,7 @@ describe("makeUuid", () => {
 
   it("crypto.randomUUID YO'Q bo'lsa ham ishlaydi (http:// tarmoq holati)", () => {
     const orig = globalThis.crypto;
-    // Xavfsiz bo'lmagan kontekstni taqlid qilamiz: randomUUID yo'q, getRandomValues bor.
+
     const fake = { getRandomValues: (a: Uint8Array) => orig.getRandomValues(a) } as Crypto;
     Object.defineProperty(globalThis, "crypto", { value: fake, configurable: true });
     try {

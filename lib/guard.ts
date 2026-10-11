@@ -1,13 +1,9 @@
-// Xotirada rate-limit va idempotency. Ko'p instance'li production uchun Redis/DB bilan almashtiring.
-// MUHIM: bu himoya faqat bitta server uchun. Server qayta ishga tushsa holat yo'qoladi;
-// bir nechta instance bo'lsa takroriy yuborishga qarshi DB'dagi idempotency_key ishlaydi (lib/db.ts).
+
 const hits = new Map<string, number[]>();
 type Entry = { id: string; t: number; done: boolean };
 const seen = new Map<string, Entry>();
 const TTL = 3600_000;
-const MAX_KEYS = 10_000; // xotira portlashining oldini oladi (DoS himoyasi)
-
-// Xotira chegaradan oshsa, muddati o'tgan yozuv yoki eng eskisini chiqarib tashlaymiz.
+const MAX_KEYS = 10_000; 
 function trim<K, V>(m: Map<K, V>, max: number) {
   while (m.size > max) {
     const first = m.keys().next();
@@ -26,7 +22,7 @@ export function rateLimit(key: string, max = 5, windowMs = 10 * 60_000): boolean
   if (arr.length >= max) { hits.set(key, arr); return false; }
   arr.push(now); hits.set(key, arr); return true;
 }
-// Muddati o'tganlarni tozalash har chaqiruvda emas, vaqti-vaqti bilan (O(n) har so'rovda bo'lmasin).
+
 let lastSweep = 0;
 function sweep(now: number) {
   if (now - lastSweep < 60_000) return;

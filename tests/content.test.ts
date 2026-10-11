@@ -10,8 +10,6 @@ import { imageUrls, getCategory } from "@/lib/catalog";
 import { siteUrl, localBusinessLd, productLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-// Bu testlar kontent fayllari yillar davomida tahrirlanganda ham
-// sayt buzilib qolmasligini kafolatlaydi (noto'g'ri id, yetim kategoriya va h.k.).
 const NON_LATIN = /[^\p{Script=Latin}\p{Script=Cyrillic}\p{Script=Arabic}\s\p{P}\p{N}\p{S}]/u;
 
 describe("kontent integriteti", () => {

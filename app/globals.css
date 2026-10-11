@@ -8,9 +8,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 @media (max-width: 768px), (prefers-reduced-motion: reduce) { body::after { display: none; } }
 :focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 
-/* Hero arxitektura chizmasi: chiziq chizilish animatsiyasi (motion SVG'da ishlamagani uchun CSS).
-   dashoffset shakl uzunligidan (viewBox 400x500 da eng uzun ~1600) katta bo'lsa chiziq yashirin
-   bo'ladi; animatsiya uni 0 ga tushiradi. pathLength'ga tayanmaydi (brauzerda mos kelmadi). */
+
 .draw rect, .draw path { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
 .draw.play rect, .draw.play path { animation: draw-line 1.8s cubic-bezier(.4, 0, .2, 1) forwards; }
 .draw.play > :nth-child(1) { animation-delay: 0s; }
